@@ -4153,7 +4153,7 @@ at 30/07/2012 11:22:31</description>
 <part name="C4" library="we-rcl" deviceset="CAPACITOR" device="-0805" value="4u7/10V/X5R"/>
 <part name="GND47" library="supply1" deviceset="GND" device=""/>
 <part name="BAT1" library="extra" deviceset="3002" device=""/>
-<part name="B+" library="testpad" deviceset="TP" device="TP18SQ"/>
+<part name="+" library="testpad" deviceset="TP" device="TP18SQ"/>
 <part name="B-" library="testpad" deviceset="TP" device="TP18SQ"/>
 <part name="U$1" library="extra" deviceset="EMPTY_SIGNAL" device=""/>
 <part name="U$2" library="extra" deviceset="EMPTY_SIGNAL" device=""/>
@@ -4241,7 +4241,7 @@ at 30/07/2012 11:22:31</description>
 <instance part="C4" gate="C" x="149.86" y="83.82" rot="MR270"/>
 <instance part="GND47" gate="1" x="149.86" y="73.66" rot="MR0"/>
 <instance part="BAT1" gate="G$1" x="137.16" y="86.36" rot="R270"/>
-<instance part="B+" gate="G$1" x="134.62" y="93.98" rot="R90"/>
+<instance part="+" gate="G$1" x="134.62" y="93.98" rot="R90"/>
 <instance part="B-" gate="G$1" x="134.62" y="78.74" rot="R90"/>
 <instance part="U$1" gate="G$1" x="10.16" y="10.16"/>
 <instance part="U$2" gate="G$1" x="17.78" y="10.16"/>
@@ -4510,7 +4510,7 @@ at 30/07/2012 11:22:31</description>
 <pinref part="U1" gate="G$1" pin="VBAT"/>
 <pinref part="BAT1" gate="G$1" pin="+"/>
 <wire x1="137.16" y1="91.44" x2="137.16" y2="93.98" width="0.1524" layer="91"/>
-<pinref part="B+" gate="G$1" pin="TP"/>
+<pinref part="+" gate="G$1" pin="TP"/>
 <wire x1="137.16" y1="93.98" x2="137.16" y2="96.52" width="0.1524" layer="91"/>
 <junction x="137.16" y="93.98"/>
 <pinref part="SW1" gate="G$1" pin="S1"/>
