@@ -2039,10 +2039,10 @@ design rules under a new name.</description>
 <contactref element="B+" pad="TP"/>
 <contactref element="SW1" pad="1"/>
 <contactref element="BAT1" pad="+1" route="any" routetag="G$1.+"/>
-<wire x1="41.402" y1="35.006" x2="41.402" y2="34.29" width="0.254" layer="16"/>
+<wire x1="41.021" y1="35.006" x2="41.021" y2="34.29" width="0.254" layer="16"/>
 <wire x1="35.13205" y1="33.655" x2="36.51305" y2="35.036" width="0.6096" layer="16"/>
 <wire x1="36.51305" y1="35.036" x2="41.372" y2="35.036" width="0.6096" layer="16"/>
-<wire x1="41.402" y1="35.006" x2="41.372" y2="35.036" width="0.254" layer="16"/>
+<wire x1="41.021" y1="35.006" x2="41.372" y2="35.036" width="0.254" layer="16"/>
 <wire x1="26.35" y1="21.844" x2="26.35" y2="23.81" width="0.381" layer="16"/>
 <wire x1="26.35" y1="23.81" x2="27.305" y2="24.765" width="0.381" layer="16"/>
 <wire x1="27.305" y1="24.765" x2="27.305" y2="25.527" width="0.381" layer="16"/>
@@ -2683,8 +2683,8 @@ design rules under a new name.</description>
 <signal name="N$6">
 <contactref element="SW1" pad="2"/>
 <contactref element="Q1" pad="6"/>
-<wire x1="41.402" y1="34.006" x2="41.402" y2="33.274" width="0.254" layer="16"/>
-<wire x1="41.402" y1="34.006" x2="41.372" y2="34.036" width="0.254" layer="16"/>
+<wire x1="41.021" y1="34.006" x2="41.021" y2="33.274" width="0.254" layer="16"/>
+<wire x1="41.021" y1="34.006" x2="41.372" y2="34.036" width="0.254" layer="16"/>
 <wire x1="36.157" y1="29.225" x2="36.157" y2="29.426" width="0.381" layer="16"/>
 <wire x1="36.157" y1="29.426" x2="36.703" y2="29.972" width="0.381" layer="16"/>
 <wire x1="36.703" y1="29.972" x2="38.354" y2="29.972" width="0.381" layer="16"/>
@@ -2750,6 +2750,14 @@ design rules under a new name.</description>
 <approved hash="18,30,6304dd3cdcfa62c2"/>
 <approved hash="18,30,1d85a3bddcfd62c5"/>
 <approved hash="18,30,c62e38164654b86c"/>
+<approved hash="19,16,aab0818362e640bf"/>
+<approved hash="19,16,a8ea12d09f49c0eb"/>
+<approved hash="19,16,0d57e576ae5e0c85"/>
+<approved hash="19,16,0abde97aa08e09b3"/>
+<approved hash="19,16,284dbdf84eb1e28c"/>
+<approved hash="19,16,a32195ee20babb62"/>
+<approved hash="5,16,a14475fc34265bda"/>
+<approved hash="5,16,9d4726384c75b7f4"/>
 <approved hash="3,1,a3d9a1dba1dba3d9"/>
 <approved hash="3,1,ab9aa998a998ab9a"/>
 <approved hash="3,1,a709a50ba50ba709"/>
@@ -3030,23 +3038,25 @@ design rules under a new name.</description>
 <approved hash="19,16,305b1c250baa5b9c"/>
 <approved hash="19,16,a05c0f4d44fc9119"/>
 <approved hash="19,16,d38faffa98043f6c"/>
-<approved hash="5,16,87a9fdf704e79f39"/>
-<approved hash="5,16,0494fecc74aa8075"/>
-<approved hash="5,16,f04a8a1084ef68d6"/>
+<approved hash="5,16,4764c7b8092c2af9"/>
 <approved hash="5,16,fe33fec074ba7ace"/>
-<approved hash="5,16,79c07ec474a27d21"/>
 <approved hash="5,16,731f7ec074a277fa"/>
-<approved hash="19,16,aab0818362e640bf"/>
-<approved hash="19,16,a8ea12d09f49c0eb"/>
-<approved hash="19,16,0d57e576ae5e0c85"/>
-<approved hash="19,16,0abde97aa08e09b3"/>
-<approved hash="19,16,284dbdf84eb1e28c"/>
-<approved hash="19,16,a32195ee20babb62"/>
-<approved hash="5,16,a14475fc34265bda"/>
-<approved hash="5,16,9d4726384c75b7f4"/>
+<approved hash="5,16,79c07ec474a27d21"/>
+<approved hash="5,16,f04a8a1084ef68d6"/>
+<approved hash="5,16,0494fecc74aa8075"/>
+<approved hash="5,16,87a9fdf704e79f39"/>
+<approved hash="5,16,4554c7a809542d17"/>
+<approved hash="19,16,7e7d443637df79e0"/>
+<approved hash="19,16,79bf440637f77e3a"/>
+<approved hash="19,16,2239c8b94a344004"/>
+<approved hash="19,16,2e35c4b5441c4532"/>
+<approved hash="5,16,65b4fce87f998125"/>
+<approved hash="5,16,fec726380b3b93b6"/>
+<approved hash="5,16,92858273cfa9ce03"/>
+<approved hash="5,16,86a5fc4e977fe237"/>
 <approved hash="4,16,c2614780e79e7c73"/>
-<approved hash="4,16,6196e41f442ddfe0"/>
 <approved hash="4,16,48b2d71f372db68c"/>
+<approved hash="4,16,6196e41f442ddfe0"/>
 <approved hash="4,16,315b5f37bec4cf54"/>
 </errors>
 </board>
