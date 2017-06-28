@@ -6,7 +6,7 @@
 <setting alwaysvectorfont="no"/>
 <setting verticaltext="up"/>
 </settings>
-<grid distance="0.005" unitdist="inch" unit="inch" style="lines" multiple="1" display="no" altdistance="0.025" altunitdist="inch" altunit="inch"/>
+<grid distance="0.127" unitdist="mm" unit="mm" style="lines" multiple="1" display="no" altdistance="0.025" altunitdist="inch" altunit="inch"/>
 <layers>
 <layer number="1" name="Top" color="4" fill="1" visible="yes" active="yes"/>
 <layer number="2" name="Route2" color="1" fill="3" visible="no" active="no"/>
@@ -38,14 +38,14 @@
 <layer number="28" name="bValues" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="29" name="tStop" color="15" fill="3" visible="yes" active="yes"/>
 <layer number="30" name="bStop" color="7" fill="6" visible="yes" active="yes"/>
-<layer number="31" name="tCream" color="7" fill="4" visible="no" active="yes"/>
-<layer number="32" name="bCream" color="7" fill="5" visible="no" active="yes"/>
-<layer number="33" name="tFinish" color="6" fill="3" visible="no" active="yes"/>
-<layer number="34" name="bFinish" color="6" fill="6" visible="no" active="yes"/>
-<layer number="35" name="tGlue" color="7" fill="4" visible="no" active="yes"/>
-<layer number="36" name="bGlue" color="7" fill="5" visible="no" active="yes"/>
-<layer number="37" name="tTest" color="7" fill="1" visible="no" active="yes"/>
-<layer number="38" name="bTest" color="7" fill="1" visible="no" active="yes"/>
+<layer number="31" name="tCream" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="32" name="bCream" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="33" name="tFinish" color="6" fill="3" visible="yes" active="yes"/>
+<layer number="34" name="bFinish" color="6" fill="6" visible="yes" active="yes"/>
+<layer number="35" name="tGlue" color="7" fill="4" visible="yes" active="yes"/>
+<layer number="36" name="bGlue" color="7" fill="5" visible="yes" active="yes"/>
+<layer number="37" name="tTest" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="38" name="bTest" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="39" name="tKeepout" color="4" fill="11" visible="yes" active="yes"/>
 <layer number="40" name="bKeepout" color="1" fill="11" visible="yes" active="yes"/>
 <layer number="41" name="tRestrict" color="4" fill="10" visible="yes" active="yes"/>
@@ -54,12 +54,12 @@
 <layer number="44" name="Drills" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="45" name="Holes" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="46" name="Milling" color="3" fill="1" visible="yes" active="yes"/>
-<layer number="47" name="Measures" color="7" fill="1" visible="no" active="yes"/>
-<layer number="48" name="Document" color="7" fill="1" visible="no" active="yes"/>
-<layer number="49" name="Reference" color="7" fill="1" visible="no" active="yes"/>
+<layer number="47" name="Measures" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="48" name="Document" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="49" name="Reference" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="50" name="dxf" color="7" fill="1" visible="no" active="no"/>
-<layer number="51" name="tDocu" color="7" fill="1" visible="no" active="yes"/>
-<layer number="52" name="bDocu" color="7" fill="1" visible="no" active="yes"/>
+<layer number="51" name="tDocu" color="7" fill="1" visible="yes" active="yes"/>
+<layer number="52" name="bDocu" color="7" fill="1" visible="yes" active="yes"/>
 <layer number="53" name="tGND_GNDA" color="7" fill="9" visible="no" active="no"/>
 <layer number="54" name="bGND_GNDA" color="1" fill="9" visible="no" active="no"/>
 <layer number="56" name="wert" color="7" fill="1" visible="no" active="no"/>
@@ -199,7 +199,7 @@
 <wire x1="19.58405" y1="11.557" x2="17.14565" y2="11.557" width="0.889" layer="29"/>
 <wire x1="17.14565" y1="11.557" x2="16.00265" y2="12.7" width="0.889" layer="29"/>
 <wire x1="16.00265" y1="12.7" x2="16.00265" y2="19.939" width="0.889" layer="29"/>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="1.905" y="11.453503125"/>
 <vertex x="1.905" y="8.292396875" curve="60.00016"/>
 <vertex x="2.032" y="8.072425"/>
@@ -271,7 +271,7 @@
 <vertex x="0.127" y="12.626678125"/>
 <vertex x="1.778" y="11.673475" curve="-60.00016"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="1.524" y="37.22011875"/>
 <vertex x="2.54" y="37.806709375"/>
 <vertex x="2.54" y="30.97921875"/>
@@ -303,7 +303,7 @@
 <vertex x="1.905" y="27.15783125"/>
 <vertex x="1.524" y="27.15783125"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="41.454090625" y="37.806709375"/>
 <vertex x="42.470090625" y="37.22011875"/>
 <vertex x="42.470090625" y="27.15783125"/>
@@ -335,48 +335,48 @@
 <vertex x="42.089090625" y="31.1613"/>
 <vertex x="41.454090625" y="30.97921875"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="10.5664" y="9.121340625" curve="9.147954"/>
 <vertex x="12.18933125" y="7.42225"/>
 <vertex x="10.5664" y="8.35925"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="17.3809" y="4.424890625"/>
 <vertex x="21.99705" y="1.759759375"/>
 <vertex x="26.613190625" y="4.424890625" curve="-15.509351"/>
 <vertex x="22.70420625" y="3.69998125" curve="-223.739042"/>
 <vertex x="21.28988125" y="3.69998125" curve="-15.509345"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="31.804759375" y="7.42225" curve="9.147954"/>
 <vertex x="33.427690625" y="9.121340625"/>
 <vertex x="33.427690625" y="8.35925"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="5.7912" y="26.19505"/>
 <vertex x="5.7912" y="26.62685"/>
 <vertex x="7.0612" y="26.62685"/>
 <vertex x="7.0612" y="26.19505"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="7.0612" y="19.13385"/>
 <vertex x="7.0612" y="20.40385"/>
 <vertex x="5.7912" y="20.40385"/>
 <vertex x="5.7912" y="19.13385"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="7.0612" y="14.18085"/>
 <vertex x="7.0612" y="13.96495"/>
 <vertex x="5.7912" y="13.96495"/>
 <vertex x="5.7912" y="14.18085"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="5.7912" y="12.91085"/>
 <vertex x="5.7912" y="13.12675"/>
 <vertex x="7.0612" y="13.12675"/>
 <vertex x="7.0612" y="12.91085"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="3.048" y="8.659009375"/>
 <vertex x="3.048" y="14.30785"/>
 <vertex x="4.953" y="14.30785"/>
@@ -451,19 +451,19 @@
 <vertex x="10.0584" y="45.858240625"/>
 <vertex x="10.0584" y="4.611559375"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="37.110690625" y="22.80415"/>
 <vertex x="38.380690625" y="22.80415"/>
 <vertex x="38.380690625" y="23.02005"/>
 <vertex x="37.110690625" y="23.02005"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="38.380690625" y="21.96595"/>
 <vertex x="37.110690625" y="21.96595"/>
 <vertex x="37.110690625" y="21.75005"/>
 <vertex x="38.380690625" y="21.75005"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="33.935690625" y="45.858240625"/>
 <vertex x="33.935690625" y="4.611559375"/>
 <vertex x="40.946090625" y="8.659009375"/>
@@ -528,7 +528,7 @@
 <vertex x="40.946090625" y="36.30425"/>
 <vertex x="40.946090625" y="41.810790625"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="17.49673125" y="42.2275"/>
 <vertex x="13.90715" y="38.637909375"/>
 <vertex x="13.90715" y="27.960890625"/>
@@ -542,7 +542,7 @@
 <vertex x="27.03511875" y="41.5925" curve="-60.000102"/>
 <vertex x="27.03511875" y="42.2275"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="13.14515" y="19.38906875"/>
 <vertex x="13.14515" y="12.187490625"/>
 <vertex x="16.63313125" y="8.6995"/>
@@ -562,40 +562,26 @@
 <vertex x="13.78015" y="12.450509375"/>
 <vertex x="13.78015" y="19.38906875" curve="-59.999538"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="12.475809375" y="10.30045"/>
 <vertex x="15.2541" y="7.522159375" curve="60.000124"/>
 <vertex x="14.80508125" y="7.07315"/>
 <vertex x="12.0268" y="9.851440625" curve="59.999852"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="28.74" y="7.522159375"/>
 <vertex x="31.51828125" y="10.30045" curve="60.000542"/>
 <vertex x="31.9673" y="9.8514375"/>
 <vertex x="29.189009375" y="7.07315" curve="59.999526"/>
 </polygon>
-<polygon width="0" layer="25">
+<polygon width="0.01" layer="25">
 <vertex x="21.67955" y="5.91421875"/>
 <vertex x="21.67955" y="3.96606875" curve="-60.000102"/>
 <vertex x="22.31455" y="3.96606875"/>
 <vertex x="22.31455" y="5.91421875" curve="-60.000102"/>
 </polygon>
-<polygon width="0" layer="25">
-<vertex x="12.58708125" y="43.607390625"/>
-<vertex x="14.437509375" y="40.526459375" curve="0.967658"/>
-<vertex x="14.06516875" y="40.395640625"/>
-<vertex x="10.5664" y="45.889859375"/>
-<vertex x="10.5664" y="45.21676875"/>
-<vertex x="13.816559375" y="40.304340625" curve="0.98073"/>
-<vertex x="13.4431" y="40.161109375"/>
-<vertex x="10.5664" y="44.271090625"/>
-<vertex x="10.5664" y="43.679059375"/>
-<vertex x="13.19378125" y="40.06138125" curve="0.994819"/>
-<vertex x="12.81928125" y="39.90528125"/>
-<vertex x="10.5664" y="42.84241875"/>
-<vertex x="10.5664" y="42.315759375"/>
-<vertex x="12.569309375" y="39.7968" curve="1.009902"/>
-<vertex x="12.19391875" y="39.627309375"/>
+<polygon width="0.01" layer="25">
+<vertex x="12.193915625" y="39.6273125"/>
 <vertex x="10.5664" y="41.567640625"/>
 <vertex x="10.5664" y="41.09436875"/>
 <vertex x="11.9434" y="39.50973125" curve="1.026026"/>
@@ -620,28 +606,32 @@
 <vertex x="19.45738125" y="47.28066875"/>
 <vertex x="20.131859375" y="42.4815"/>
 <vertex x="20.367509375" y="42.4815"/>
+<vertex x="20.12505" y="44.456159375" curve="-42.688814"/>
+<vertex x="19.936359375" y="45.992959375"/>
 <vertex x="19.757009375" y="47.453659375"/>
 <vertex x="20.21491875" y="47.71803125"/>
-<vertex x="20.71915" y="42.4815"/>
-<vertex x="20.952559375" y="42.4815"/>
+<vertex x="20.30736875" y="46.75795" curve="-11.253862"/>
+<vertex x="20.591990625" y="47.062859375"/>
 <vertex x="20.52628125" y="47.8978"/>
 <vertex x="21.00323125" y="48.173159375"/>
-<vertex x="21.30151875" y="42.4815"/>
-<vertex x="21.533590625" y="42.4815"/>
+<vertex x="21.045409375" y="47.368240625" curve="-9.10791"/>
+<vertex x="21.35851875" y="47.4949"/>
 <vertex x="21.32828125" y="48.36083125"/>
 <vertex x="21.8274" y="48.649"/>
-<vertex x="21.88123125" y="42.4815"/>
-<vertex x="22.112859375" y="42.4815"/>
+<vertex x="21.83666875" y="47.58695" curve="-8.648349"/>
+<vertex x="22.15741875" y="47.58695"/>
 <vertex x="22.166690625" y="48.649"/>
 <vertex x="22.665809375" y="48.36083125"/>
-<vertex x="22.4605" y="42.4815"/>
-<vertex x="22.69258125" y="42.4815"/>
+<vertex x="22.63556875" y="47.4949" curve="-9.107923"/>
+<vertex x="22.94868125" y="47.368240625"/>
 <vertex x="22.990859375" y="48.173159375"/>
 <vertex x="23.467809375" y="47.8978"/>
-<vertex x="23.04153125" y="42.4815"/>
-<vertex x="23.27495" y="42.4815"/>
+<vertex x="23.4021" y="47.062859375" curve="-11.25381"/>
+<vertex x="23.68671875" y="46.75795"/>
 <vertex x="23.77916875" y="47.71803125"/>
 <vertex x="24.23708125" y="47.453659375"/>
+<vertex x="24.05773125" y="45.992959375" curve="-42.688787"/>
+<vertex x="23.869040625" y="44.456159375"/>
 <vertex x="23.62658125" y="42.4815"/>
 <vertex x="23.86223125" y="42.4815"/>
 <vertex x="24.536709375" y="47.28066875"/>
@@ -673,7 +663,7 @@
 <vertex x="33.427690625" y="42.315759375"/>
 <vertex x="33.427690625" y="42.84241875"/>
 <vertex x="31.174809375" y="39.90528125" curve="0.994819"/>
-<vertex x="30.8003125" y="40.0613875"/>
+<vertex x="30.800309375" y="40.06138125"/>
 <vertex x="33.427690625" y="43.679059375"/>
 <vertex x="33.427690625" y="44.271090625"/>
 <vertex x="30.550990625" y="40.161109375" curve="0.98073"/>
@@ -684,6 +674,50 @@
 <vertex x="29.55658125" y="40.526459375"/>
 <vertex x="31.407009375" y="43.607390625"/>
 <vertex x="21.99705" y="49.040240625"/>
+<vertex x="12.58708125" y="43.607390625"/>
+<vertex x="14.437509375" y="40.526459375" curve="0.967658"/>
+<vertex x="14.06516875" y="40.395640625"/>
+<vertex x="10.5664" y="45.889859375"/>
+<vertex x="10.5664" y="45.21676875"/>
+<vertex x="13.816559375" y="40.304340625" curve="0.98073"/>
+<vertex x="13.4431" y="40.161109375"/>
+<vertex x="10.5664" y="44.271090625"/>
+<vertex x="10.5664" y="43.679059375"/>
+<vertex x="13.19378125" y="40.06138125" curve="0.994819"/>
+<vertex x="12.81928125" y="39.90528125"/>
+<vertex x="10.5664" y="42.84241875"/>
+<vertex x="10.5664" y="42.315759375"/>
+<vertex x="12.569309375" y="39.7968" curve="1.009902"/>
+</polygon>
+<polygon width="0.01" layer="25">
+<vertex x="20.71915" y="42.4815"/>
+<vertex x="20.952559375" y="42.4815"/>
+<vertex x="20.8591" y="43.669" curve="-9.253999"/>
+<vertex x="20.58493125" y="43.87538125"/>
+</polygon>
+<polygon width="0.01" layer="25">
+<vertex x="21.249459375" y="43.474709375"/>
+<vertex x="21.30151875" y="42.4815"/>
+<vertex x="21.533590625" y="42.4815"/>
+<vertex x="21.501609375" y="43.39750625" curve="-7.108062"/>
+</polygon>
+<polygon width="0.01" layer="25">
+<vertex x="21.873709375" y="43.34258125"/>
+<vertex x="21.88123125" y="42.4815"/>
+<vertex x="22.112859375" y="42.4815"/>
+<vertex x="22.12038125" y="43.34258125" curve="-6.648428"/>
+</polygon>
+<polygon width="0.01" layer="25">
+<vertex x="22.4605" y="42.4815"/>
+<vertex x="22.49248125" y="43.397509375" curve="7.108079"/>
+<vertex x="22.74463125" y="43.474709375"/>
+<vertex x="22.69258125" y="42.4815"/>
+</polygon>
+<polygon width="0.01" layer="25">
+<vertex x="23.04153125" y="42.4815"/>
+<vertex x="23.134990625" y="43.669" curve="9.254002"/>
+<vertex x="23.409159375" y="43.87538125"/>
+<vertex x="23.27495" y="42.4815"/>
 </polygon>
 <wire x1="23.144690625" y1="11.90636875" x2="23.44758125" y2="10.188609375" width="0.1524" layer="29"/>
 <wire x1="24.016540625" y1="12.8665" x2="23.91475" y2="13.146159375" width="0.1524" layer="29"/>
@@ -792,7 +826,7 @@
 <wire x1="19.4565" y1="4.00686875" x2="20.22571875" y2="8.3693" width="0.1524" layer="29"/>
 <wire x1="14.681840625" y1="5.7447" x2="14.9519" y2="6.212440625" width="0.1524" layer="29"/>
 <wire x1="16.99315" y1="4.66691875" x2="18.340709375" y2="8.3693" width="0.1524" layer="29"/>
-<polygon width="0" layer="29">
+<polygon width="0.01" layer="29">
 <vertex x="7.7724" y="39.19985"/>
 <vertex x="7.7724" y="39.78405"/>
 <vertex x="5.6642" y="39.78405" curve="90"/>
@@ -804,7 +838,7 @@
 <vertex x="5.6642" y="37.67585"/>
 <vertex x="5.6642" y="39.19985"/>
 </polygon>
-<polygon width="0" layer="29">
+<polygon width="0.01" layer="29">
 <vertex x="7.7724" y="30.86865"/>
 <vertex x="7.7724" y="33.56105"/>
 <vertex x="7.1882" y="33.56105"/>
@@ -818,7 +852,7 @@
 <vertex x="7.1882" y="31.92275"/>
 <vertex x="7.1882" y="30.86865"/>
 </polygon>
-<polygon width="0" layer="29">
+<polygon width="0.01" layer="29">
 <vertex x="5.08" y="24.64565"/>
 <vertex x="5.08" y="26.75385"/>
 <vertex x="5.6642" y="26.75385"/>
@@ -836,7 +870,7 @@
 <vertex x="5.6642" y="25.48385"/>
 <vertex x="5.6642" y="24.64565"/>
 </polygon>
-<polygon width="0" layer="29">
+<polygon width="0.01" layer="29">
 <vertex x="5.08" y="19.00685"/>
 <vertex x="5.08" y="20.53085"/>
 <vertex x="5.6642" y="20.53085"/>
@@ -852,7 +886,7 @@
 <vertex x="7.1882" y="18.42265"/>
 <vertex x="5.6642" y="18.42265" curve="-90"/>
 </polygon>
-<polygon width="0" layer="29">
+<polygon width="0.01" layer="29">
 <vertex x="7.1882" y="14.0729"/>
 <vertex x="7.7724" y="14.0729"/>
 <vertex x="7.7724" y="14.30785" curve="90"/>
@@ -876,7 +910,7 @@
 <vertex x="5.6642" y="14.30785"/>
 <vertex x="7.1882" y="14.30785"/>
 </polygon>
-<polygon width="0" layer="29">
+<polygon width="0.01" layer="29">
 <vertex x="35.713690625" y="36.17725"/>
 <vertex x="36.78785" y="33.48485"/>
 <vertex x="37.071909375" y="33.48485"/>
@@ -891,7 +925,7 @@
 <vertex x="36.92988125" y="34.7054"/>
 <vertex x="36.34266875" y="36.17725"/>
 </polygon>
-<polygon width="0" layer="29">
+<polygon width="0.01" layer="29">
 <vertex x="39.091890625" y="29.95425"/>
 <vertex x="36.399490625" y="29.95425"/>
 <vertex x="36.399490625" y="27.26185"/>
@@ -905,7 +939,7 @@
 <vertex x="36.983690625" y="29.37005"/>
 <vertex x="39.091890625" y="29.37005"/>
 </polygon>
-<polygon width="0" layer="29">
+<polygon width="0.01" layer="29">
 <vertex x="36.399490625" y="21.858"/>
 <vertex x="36.399490625" y="21.62305" curve="90"/>
 <vertex x="36.983690625" y="21.03885"/>
@@ -929,7 +963,7 @@
 <vertex x="36.983690625" y="21.62305"/>
 <vertex x="36.983690625" y="21.858"/>
 </polygon>
-<polygon width="0" layer="29">
+<polygon width="0.01" layer="29">
 <vertex x="36.399490625" y="17.50825"/>
 <vertex x="39.091890625" y="17.50825"/>
 <vertex x="39.091890625" y="16.92405"/>
@@ -939,7 +973,8 @@
 <vertex x="37.453590625" y="16.92405"/>
 <vertex x="36.399490625" y="16.92405"/>
 </polygon>
-<hole x="21.99705" y="45.593" drill="3.81"/>
+<hole x="21.99705" y="45.466" drill="4"/>
+<text x="27.686" y="4.318" size="1.27" layer="26" font="vector" ratio="15" rot="MR0">git.io/cwtkn</text>
 </plain>
 <libraries>
 <library name="led">
@@ -1716,7 +1751,7 @@ design rules under a new name.</description>
 </element>
 <element name="U$3" library="extra" package="SMALLSPOT" value="EMPTY_SIGNAL" x="15.41845" y="6.9088" rot="R180"/>
 <element name="SJ4" library="jumper" package="SJ_2" value="" x="28.194" y="8.509" smashed="yes" rot="MR180">
-<attribute name="NAME" x="23.876" y="7.112" size="1.27" layer="26" font="vector" ratio="15" rot="MR180"/>
+<attribute name="NAME" x="21.971" y="9.017" size="1.27" layer="26" font="vector" ratio="15" rot="MR180"/>
 <attribute name="VALUE" x="28.0939" y="8.509" size="1.27" layer="28" font="vector" ratio="15" rot="MR180"/>
 </element>
 <element name="U$4" library="extra" package="SMALLSPOT" value="EMPTY_SIGNAL" x="28.57565" y="6.9088" rot="R180"/>
@@ -1732,7 +1767,7 @@ design rules under a new name.</description>
 <via x="26.36585" y="25.4" extent="1-16" drill="0.635"/>
 </signal>
 <signal name="N$11">
-<polygon width="0" layer="1">
+<polygon width="0.01" layer="1">
 <vertex x="7.7724" y="39.19985"/>
 <vertex x="7.7724" y="39.78405"/>
 <vertex x="5.6642" y="39.78405" curve="90"/>
@@ -1746,7 +1781,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$12">
-<polygon width="0" layer="1">
+<polygon width="0.01" layer="1">
 <vertex x="7.7724" y="30.86865"/>
 <vertex x="7.7724" y="33.56105"/>
 <vertex x="7.1882" y="33.56105"/>
@@ -1762,7 +1797,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$13">
-<polygon width="0" layer="1">
+<polygon width="0.01" layer="1">
 <vertex x="5.08" y="24.64565"/>
 <vertex x="5.08" y="26.75385" curve="-90"/>
 <vertex x="5.6642" y="27.33805"/>
@@ -1776,7 +1811,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$14">
-<polygon width="0" layer="1" pour="cutout">
+<polygon width="0.01" layer="1" pour="cutout">
 <vertex x="5.6642" y="26.06805"/>
 <vertex x="5.6642" y="26.75385"/>
 <vertex x="7.1882" y="26.75385"/>
@@ -1784,7 +1819,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$15">
-<polygon width="0" layer="1" pour="cutout">
+<polygon width="0.01" layer="1" pour="cutout">
 <vertex x="5.6642" y="19.00685"/>
 <vertex x="5.6642" y="20.530828125" curve="-90"/>
 <vertex x="5.664221875" y="20.53085"/>
@@ -1793,7 +1828,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$16">
-<polygon width="0" layer="1">
+<polygon width="0.01" layer="1">
 <vertex x="5.08" y="20.53085"/>
 <vertex x="5.08" y="19.00685" curve="90"/>
 <vertex x="5.6642" y="18.42265"/>
@@ -1805,7 +1840,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$17">
-<polygon width="0" layer="1">
+<polygon width="0.01" layer="1">
 <vertex x="7.1882" y="14.0729"/>
 <vertex x="7.7724" y="14.0729"/>
 <vertex x="7.7724" y="14.30785" curve="90"/>
@@ -1831,7 +1866,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$18">
-<polygon width="0" layer="1">
+<polygon width="0.01" layer="1">
 <vertex x="35.713690625" y="36.17725"/>
 <vertex x="36.78785" y="33.48485"/>
 <vertex x="37.071909375" y="33.48485"/>
@@ -1848,7 +1883,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$19">
-<polygon width="0" layer="1">
+<polygon width="0.01" layer="1">
 <vertex x="39.091890625" y="29.95425"/>
 <vertex x="36.399490625" y="29.95425"/>
 <vertex x="36.399490625" y="27.26185"/>
@@ -1864,7 +1899,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$20">
-<polygon width="0" layer="1">
+<polygon width="0.01" layer="1">
 <vertex x="36.983690625" y="21.03885"/>
 <vertex x="38.507690625" y="21.03885" curve="90"/>
 <vertex x="39.091890625" y="21.62305"/>
@@ -1890,7 +1925,7 @@ design rules under a new name.</description>
 </polygon>
 </signal>
 <signal name="N$21">
-<polygon width="0" layer="1">
+<polygon width="0.01" layer="1">
 <vertex x="36.399490625" y="17.50825"/>
 <vertex x="39.091890625" y="17.50825"/>
 <vertex x="39.091890625" y="16.92405"/>
@@ -2064,6 +2099,8 @@ design rules under a new name.</description>
 <wire x1="17.272" y1="13.081" x2="16.637" y2="13.716" width="0.381" layer="16"/>
 <wire x1="16.637" y1="13.716" x2="16.637" y2="16.445" width="0.381" layer="16"/>
 <wire x1="16.637" y1="16.445" x2="16.129" y2="16.953" width="0.381" layer="16"/>
+<wire x1="31.496" y1="9.779" x2="31.242" y2="10.16" width="0.254" layer="16"/>
+<wire x1="31.242" y1="10.16" x2="30.861" y2="10.16" width="0.254" layer="16"/>
 </signal>
 <signal name="N$59">
 <contactref element="C5" pad="1"/>
@@ -2331,7 +2368,7 @@ design rules under a new name.</description>
 <wire x1="20.651190625" y1="26.0477" x2="20.431740625" y2="27.2923" width="0.1524" layer="1"/>
 <wire x1="19.874559375" y1="20.94448125" x2="16.67941875" y2="24.7523" width="0.1524" layer="1"/>
 <wire x1="19.46756875" y1="20.53748125" x2="14.89995" y2="24.37016875" width="0.1524" layer="1"/>
-<polygon width="0" layer="1" isolate="0.254" orphans="yes">
+<polygon width="0.01" layer="1" isolate="0.254" orphans="yes">
 <vertex x="33.427690625" y="27.708659375" curve="101.774498"/>
 <vertex x="10.5664" y="27.708659375"/>
 <vertex x="10.5664" y="9.121340625" curve="101.774483"/>
@@ -2403,7 +2440,7 @@ design rules under a new name.</description>
 <wire x1="13.57695" y1="32.999040625" x2="10.808340625" y2="37.7944" width="0.1524" layer="1"/>
 </signal>
 <signal name="N$26">
-<polygon width="0" layer="1" pour="cutout">
+<polygon width="0.01" layer="1" pour="cutout">
 <vertex x="29.87105" y="18.415" curve="180"/>
 <vertex x="14.12305" y="18.415" curve="180"/>
 </polygon>
@@ -2773,77 +2810,27 @@ design rules under a new name.</description>
 </signal>
 </signals>
 <errors>
-<approved hash="18,30,32fd23166acd7a9e"/>
-<approved hash="18,30,178aac2855c921a6"/>
-<approved hash="18,30,92ecfd452f067c61"/>
-<approved hash="5,16,897aa680191299b8"/>
-<approved hash="5,16,fe95ed10a5616e57"/>
-<approved hash="5,16,52301f3e35a27755"/>
-<approved hash="5,16,25bb9f3235aa80da"/>
-<approved hash="5,16,df1c9f3e35ba7a61"/>
-<approved hash="5,16,58ef1f3a35a27d8e"/>
-<approved hash="19,16,2a72cbf06313caeb"/>
-<approved hash="4,16,34c4b7b44f5bcc8f"/>
-<approved hash="4,16,4c403f7bc1c2b2d5"/>
-<approved hash="4,16,5b20c2bb7ada65a7"/>
-<approved hash="4,16,796e605dd812473f"/>
-<approved hash="19,16,ab4919c51d46eab7"/>
-<approved hash="18,30,21a1dddaddce246c"/>
-<approved hash="18,30,2161dd9adda62594"/>
-<approved hash="18,30,62e0f317f2da66f4"/>
-<approved hash="18,30,62a0f3d7f322669c"/>
-<approved hash="18,30,7715cc5535d84a40"/>
-<approved hash="18,30,2761d39ad3a62394"/>
-<approved hash="18,30,27a1d3dad3ce226c"/>
-<approved hash="18,30,22e0bd17bcda26f4"/>
-<approved hash="18,30,22a0bdd7bd22269c"/>
-<approved hash="18,30,6561f59af5a66194"/>
-<approved hash="18,30,65a1f5daf5ce606c"/>
-<approved hash="18,30,62a0cfd7cf22669c"/>
-<approved hash="18,30,62e0cf17ceda66f4"/>
-<approved hash="18,30,e2e04f14f91054e4"/>
-<approved hash="18,30,c304fd3cfcfac2c2"/>
-<approved hash="18,30,bd8583bdfcfdc2c5"/>
-<approved hash="18,30,4e2e38164654306c"/>
-<approved hash="18,30,c62e38164654b86c"/>
-<approved hash="18,30,224fd606d6ac8e0c"/>
-<approved hash="18,30,2506b620d66692e1"/>
-<approved hash="18,30,0b2a4d63276c6125"/>
-<approved hash="18,30,272020673e605d34"/>
-<approved hash="18,30,25e25ad33ea25ec8"/>
-<approved hash="18,30,ce2eb816c654b06c"/>
-<approved hash="18,30,6304dd3cdcfa62c2"/>
-<approved hash="18,30,1d85a3bddcfd62c5"/>
-<approved hash="18,30,c62e38164654b86c"/>
-<approved hash="19,16,aab0818362e640bf"/>
-<approved hash="19,16,a8ea12d09f49c0eb"/>
-<approved hash="19,16,0d57e576ae5e0c85"/>
-<approved hash="19,16,0abde97aa08e09b3"/>
-<approved hash="19,16,284dbdf84eb1e28c"/>
-<approved hash="19,16,a32195ee20babb62"/>
-<approved hash="5,16,a14475fc34265bda"/>
-<approved hash="5,16,9d4726384c75b7f4"/>
 <approved hash="18,30,802bce8f4455f254"/>
 <approved hash="18,30,73362da2196696bd"/>
 <approved hash="18,30,24a9d8081811e4b0"/>
 <approved hash="18,30,14b1a8106819d4b8"/>
 <approved hash="18,30,c4b97818b81e04bf"/>
-<approved hash="18,30,0b74c4315b4ebefa"/>
 <approved hash="18,30,d6b9ca69848bb769"/>
 <approved hash="18,30,7a080ab51957914f"/>
+<approved hash="18,30,0b74c4315b4ebefa"/>
 <approved hash="18,30,7b843e4ea2c31006"/>
 <approved hash="18,30,62fdd2b722356778"/>
-<approved hash="18,30,098cde897a2f8e3f"/>
 <approved hash="18,30,f079da8170197e37"/>
+<approved hash="18,30,098cde897a2f8e3f"/>
 <approved hash="18,30,f9e1ae4fc64d91e3"/>
 <approved hash="18,30,ec1b407a80732c12"/>
 <approved hash="18,30,3c1390725074fc15"/>
+<approved hash="18,30,ff2ddc28efd8ccd9"/>
+<approved hash="18,30,49987d31e990d242"/>
 <approved hash="18,30,9167542bc2d45eb2"/>
 <approved hash="18,30,4b4b4a8136a46e46"/>
 <approved hash="18,30,56e53ba452baf90c"/>
 <approved hash="18,30,f684b46ab02139bb"/>
-<approved hash="18,30,ff2ddc28efd8ccd9"/>
-<approved hash="18,30,49987d31e990d242"/>
 <approved hash="18,30,c16d85796a28cc21"/>
 <approved hash="18,30,c2bde4b877695369"/>
 <approved hash="18,30,0911dc26b5778563"/>
@@ -2859,21 +2846,21 @@ design rules under a new name.</description>
 <approved hash="18,30,510e697deeebcd92"/>
 <approved hash="18,30,24e0a89bb321a0f9"/>
 <approved hash="18,30,81792f4273dd4a4c"/>
+<approved hash="18,30,3bd117da67a748a6"/>
 <approved hash="18,30,fb3bbf7e14897948"/>
 <approved hash="18,30,c6fdcd84a1619e9a"/>
-<approved hash="18,30,3bd117da67a748a6"/>
 <approved hash="18,30,3b102b1286eeb5fe"/>
 <approved hash="18,30,0451374aa4369006"/>
 <approved hash="18,30,e97ad775fabae7ab"/>
 <approved hash="18,30,e62177c5772fe22f"/>
 <approved hash="18,30,e661779d7797e297"/>
 <approved hash="18,30,db22f755e46dc772"/>
-<approved hash="18,30,e2ff73977399e615"/>
 <approved hash="18,30,e2a773d77321e6ad"/>
-<approved hash="18,30,262eb5cab5202220"/>
+<approved hash="18,30,e2ff73977399e615"/>
 <approved hash="18,30,266eb592b5982298"/>
-<approved hash="18,30,e2a755d75521e6ad"/>
+<approved hash="18,30,262eb5cab5202220"/>
 <approved hash="18,30,e2ff55975599e615"/>
+<approved hash="18,30,e2a755d75521e6ad"/>
 <approved hash="18,30,bad6dfcbb48696bb"/>
 <approved hash="18,30,53b40d6a0d555d8b"/>
 <approved hash="18,30,da4abfc54c4462ea"/>
@@ -2885,11 +2872,11 @@ design rules under a new name.</description>
 <approved hash="18,30,22ff579757992615"/>
 <approved hash="18,30,57b7c369c355598b"/>
 <approved hash="18,30,ff187393b3e97a27"/>
-<approved hash="18,30,0907cc3fcc7c0944"/>
 <approved hash="18,30,0984ccbccc7d0945"/>
 <approved hash="18,30,fa79bf41bfc3fafb"/>
-<approved hash="18,30,356e1a4816fbbab6"/>
+<approved hash="18,30,0907cc3fcc7c0944"/>
 <approved hash="18,30,c27a3f423fc7c2ff"/>
+<approved hash="18,30,356e1a4816fbbab6"/>
 <approved hash="18,30,4cb0830e16a058c9"/>
 <approved hash="18,30,825866133ed86082"/>
 <approved hash="18,30,fe5e63e33fde1ace"/>
@@ -2897,50 +2884,50 @@ design rules under a new name.</description>
 <approved hash="18,30,5a7a3f423fc35afb"/>
 <approved hash="18,30,a907cc3fcc7ca944"/>
 <approved hash="18,30,427abf42bfc742ff"/>
-<approved hash="18,30,dcd016dcde696ba7"/>
 <approved hash="18,30,251db1f215bc7296"/>
+<approved hash="18,30,dcd016dcde696ba7"/>
+<approved hash="18,30,b6adce95cd51b569"/>
 <approved hash="18,30,400b703373f643ce"/>
 <approved hash="18,30,438b73b373f643ce"/>
-<approved hash="18,30,b6adce95cd51b569"/>
 <approved hash="18,30,96afd5cdd14f25db"/>
-<approved hash="18,30,6ee5466fd181bb34"/>
 <approved hash="18,30,3eadc695c5503d68"/>
+<approved hash="18,30,6ee5466fd181bb34"/>
 <approved hash="18,30,df4dadba8d41ffb6"/>
 <approved hash="18,30,4eb51c423c496ebe"/>
 <approved hash="18,30,993208c9988863cd"/>
 <approved hash="18,30,27a3a4173e62c1df"/>
 <approved hash="18,30,d8e298233e23f722"/>
-<approved hash="18,30,0ceef81449cfaf8d"/>
 <approved hash="18,30,4e7bf843f8074e3f"/>
-<approved hash="18,30,4e63f85bf8874ebf"/>
 <approved hash="18,30,b851426942edb8d5"/>
-<approved hash="18,30,3751436943ec37d4"/>
+<approved hash="18,30,0ceef81449cfaf8d"/>
+<approved hash="18,30,4e63f85bf8874ebf"/>
 <approved hash="18,30,746ae014c936fb73"/>
+<approved hash="18,30,3751436943ec37d4"/>
+<approved hash="18,30,4ffbf9c3f8874ebf"/>
+<approved hash="18,30,4fc3f9fbf8074e3f"/>
 <approved hash="18,30,4c3a099bb1c99ce9"/>
 <approved hash="18,30,b9b14389420db835"/>
-<approved hash="18,30,4fc3f9fbf8074e3f"/>
-<approved hash="18,30,4ffbf9c3f8874ebf"/>
-<approved hash="18,30,36b14289430c3734"/>
 <approved hash="18,30,34b0a59b313e7c17"/>
-<approved hash="18,30,e0fb50c35307e33f"/>
-<approved hash="18,30,36adce95cd503568"/>
+<approved hash="18,30,36b14289430c3734"/>
 <approved hash="18,30,e37b53435307e33f"/>
+<approved hash="18,30,36adce95cd503568"/>
+<approved hash="18,30,e0fb50c35307e33f"/>
 <approved hash="18,30,3eadc695c5503d68"/>
 <approved hash="18,30,fa3288a006c8814a"/>
 <approved hash="18,30,fdb2a6049bcb874f"/>
 <approved hash="18,30,ae2297b4a587e461"/>
-<approved hash="18,30,370d483548713749"/>
-<approved hash="18,30,a27add42ddcda2f5"/>
 <approved hash="18,30,379f48a7487d3745"/>
+<approved hash="18,30,a27add42ddcda2f5"/>
+<approved hash="18,30,370d483548713749"/>
+<approved hash="18,30,a27a554255c9a2f1"/>
 <approved hash="18,30,7f3da006f9ac8703"/>
 <approved hash="18,30,80eaf450f9f5ce7d"/>
-<approved hash="18,30,a27a554255c9a2f1"/>
 <approved hash="18,30,5b30efdb59deed35"/>
 <approved hash="18,30,81e1abe739e2ed0a"/>
 <approved hash="18,30,7deea00f3eefff46"/>
 <approved hash="18,30,227add42ddce22f6"/>
-<approved hash="18,30,b79f48a7487ab742"/>
 <approved hash="18,30,b70d48354876b74e"/>
+<approved hash="18,30,b79f48a7487ab742"/>
 <approved hash="18,30,227ad542d5ce22f6"/>
 <approved hash="18,30,0e6f8d48372c9696"/>
 <approved hash="18,30,205edc66dfe323db"/>
@@ -3094,6 +3081,16 @@ design rules under a new name.</description>
 <approved hash="3,1,8f0a8d0c8d0c8f0a"/>
 <approved hash="3,1,478d458b458b478d"/>
 <approved hash="3,1,dd01673b613bdb01"/>
+<approved hash="3,1,f7a9bbd7bbdff7a1"/>
+<approved hash="3,1,ffd633a833a8ffd6"/>
+<approved hash="3,1,7778a106a10e7770"/>
+<approved hash="3,1,f50da373a377f509"/>
+<approved hash="3,1,60b5d4cbd4cb60b5"/>
+<approved hash="3,1,b101b525c941fec6"/>
+<approved hash="3,1,dbb80c0a0c7adbc8"/>
+<approved hash="3,1,1a305d825dfc1a4e"/>
+<approved hash="3,1,dbb80c0a0cfbdb49"/>
+<approved hash="3,1,531c9eabf8df0cd4"/>
 <approved hash="19,1,71a272b873687072"/>
 <approved hash="19,1,73a50cbf0d697273"/>
 <approved hash="5,16,70b020c3068d5584"/>
@@ -3104,24 +3101,24 @@ design rules under a new name.</description>
 <approved hash="19,16,a05c0f4d44fc9119"/>
 <approved hash="19,16,d38faffa98043f6c"/>
 <approved hash="5,16,4764c7b8092c2af9"/>
-<approved hash="5,16,79c07ec474a27d21"/>
-<approved hash="5,16,0494fecc74aa8075"/>
-<approved hash="5,16,731f7ec074a277fa"/>
-<approved hash="5,16,fe33fec074ba7ace"/>
 <approved hash="5,16,f04a8a1084ef68d6"/>
 <approved hash="5,16,87a9fdf704e79f39"/>
+<approved hash="5,16,731f7ec074a277fa"/>
+<approved hash="5,16,fe33fec074ba7ace"/>
+<approved hash="5,16,0494fecc74aa8075"/>
+<approved hash="5,16,79c07ec474a27d21"/>
 <approved hash="5,16,4554c7a809542d17"/>
 <approved hash="19,16,79bf440637f77e3a"/>
 <approved hash="19,16,7e7d443637df79e0"/>
-<approved hash="19,16,2239c8b94a344004"/>
 <approved hash="19,16,2e35c4b5441c4532"/>
-<approved hash="5,16,65b4fce87f998125"/>
+<approved hash="19,16,2239c8b94a344004"/>
 <approved hash="5,16,fec726380b3b93b6"/>
 <approved hash="5,16,92858273cfa9ce03"/>
 <approved hash="5,16,86a5fc4e977fe237"/>
+<approved hash="5,16,65b4fce87f998125"/>
+<approved hash="4,16,c2614780e79e7c73"/>
 <approved hash="4,16,6196e41f442ddfe0"/>
 <approved hash="4,16,48b2d71f372db68c"/>
-<approved hash="4,16,c2614780e79e7c73"/>
 <approved hash="4,16,315b5f37bec4cf54"/>
 </errors>
 </board>
