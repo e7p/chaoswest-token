@@ -8,6 +8,8 @@ On SHA: Please come to me for flashing! Just plug in your token, and a flashing 
 
 Elsewise: type `make usbflash` to flash the token.
 
+Attention: When powering the badge it will take about 6 seconds to boot, before anything will be shown (because of the USB firmware upgrade option).
+
 ## Package Contents
 
 The token package should consist out of the following components. If something is missing, ask at the Chaos-West main tent for token support.
