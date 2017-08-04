@@ -103,11 +103,84 @@ int main(void) {
     
 
     uint16_t virtual_timer = 0;
+    uint8_t step = 0;
     for(;;)
 	{
 		virtual_timer++;
 		if (virtual_timer == 0) {
 			temperature_measure();
+
+			switch (step) {
+				case 0:
+				setFrontFadeColorValue(0, 255);
+				setFrontFadeColorValue(1, 0);
+				setFrontFadeColorValue(2, 0);
+				break;
+
+				case 1:
+				setFrontFadeColorValue(0, 255);
+				setFrontFadeColorValue(1, 255);
+				setFrontFadeColorValue(2, 0);
+				break;
+
+				case 2:
+				setFrontFadeColorValue(0, 0);
+				setFrontFadeColorValue(1, 255);
+				setFrontFadeColorValue(2, 0);
+				break;
+
+				case 3:
+				setFrontFadeColorValue(0, 0);
+				setFrontFadeColorValue(1, 255);
+				setFrontFadeColorValue(2, 255);
+				break;
+
+				case 4:
+				setFrontFadeColorValue(0, 0);
+				setFrontFadeColorValue(1, 0);
+				setFrontFadeColorValue(2, 255);
+				break;
+
+				case 5:
+				setFrontFadeColorValue(0, 255);
+				setFrontFadeColorValue(1, 0);
+				setFrontFadeColorValue(2, 255);
+				step = -1;
+				break;
+
+				default:
+				break;
+			}
+			step++;
+		}
+		if (1) {
+			if (pwmClock < frontRGB[0]) {
+				PORTB &= ~LED_R;
+			} else {
+				PORTB |= LED_R;
+			}
+			if (pwmClock < frontRGB[1]) {
+				PORTB &= ~LED_G;
+			} else {
+				PORTB |= LED_G;
+			}
+			if (pwmClock < frontRGB[2]) {
+				PORTB &= ~LED_B;
+			} else {
+				PORTB |= LED_B;
+			}
+
+			pwmClock++;
+
+			if (pwmClock == 0) {
+				for (uint8_t i = 0; i < 3; i++) {
+					if (frontRGB[i] > frontFadeRGB[i]) {
+						frontRGB[i]--;
+					} else if (frontRGB[i] < frontFadeRGB[i]) {
+						frontRGB[i]++;
+					}
+				}
+			}
 		}
 		usb_loop();
 	}
