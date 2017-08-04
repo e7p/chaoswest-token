@@ -2,6 +2,12 @@
 
 This is the official documentation of the Chaos-West Token which is given to anyone on the SHA2017 camp who supports us with a reasonable donation for us (mainly to be able to split-up costs we Chaos-West-villagers all share on the event). If you really want to have one of these wonderful and token kits, just come to our Chaos-West main tent on the event and support us with a recommended donation. In case there are some left-overs after the event, it should be somehow possible to receive these if you still want to get a token after the event. You'll find more information also in this documentation after SHA2017, the easiest would probably be to write an e-mail to cwtkn@devtal.de which should address the makers of this token. As this is a project released to the public domain, consolidating the thought of open hardware and free software, you can also produce the board by yourself (or wire up the rather simple circuit on a breadboard), but getting it from us really supports the collective activities of Chaos-West, just consider that.
 
+## Quick Start
+
+On SHA: Please come to me for flashing! Just plug in your token, and a flashing demo will be flashed.
+
+Elsewise: type `make usbflash` to flash the token.
+
 ## Package Contents
 
 The token package should consist out of the following components. If something is missing, ask at the Chaos-West main tent for token support.
