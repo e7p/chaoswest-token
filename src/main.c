@@ -3,9 +3,14 @@
 #include <avr/pgmspace.h>
 #include <util/delay.h>
 
+#include "i2cusb.h"
+#include "light_ws2812.h"
+
 #define LED_R (1 << PB5)
 #define LED_G (1 << PB0)
 #define LED_B (1 << PB1)
+
+struct cRGB ws2813_led[5];
 
 uint8_t frontRGB[3] = {0, 0, 0};
 uint8_t frontFadeRGB[3] = {0, 0, 0};
@@ -46,7 +51,7 @@ void setFrontColorValue(uint8_t channel, uint8_t value) {
 }
 
 /* Timer 0: 125kHz Software PWM */
-ISR(TIMER0_COMPA_vect)
+/*ISR(TIMER0_COMPA_vect)
 {
 	if (pwmClock < frontRGB[0]) {
 		PORTB &= ~LED_R;
@@ -75,8 +80,42 @@ ISR(TIMER0_COMPA_vect)
 			}
 		}
 	}
+}*/
+
+int main(void) {
+	temperature_setup();
+	usb_setup();
+	
+	// Initialize GPIOs
+	PORTB |= LED_R | LED_G | LED_B;
+	DDRB |= LED_R | LED_G | LED_B;
+
+	ws2813_led[0].r=255;ws2813_led[0].g=0;ws2813_led[0].b=0;
+	ws2813_led[1].r=255;ws2813_led[1].g=255;ws2813_led[1].b=0;
+	ws2813_led[2].r=0;ws2813_led[2].g=255;ws2813_led[2].b=0;
+	ws2813_led[3].r=0;ws2813_led[3].g=0;ws2813_led[3].b=255;
+	ws2813_led[4].r=255;ws2813_led[4].g=0;ws2813_led[4].b=255;
+	ws2812_setleds(ws2813_led,5);
+	_delay_ms(100);
+	ws2812_setleds(ws2813_led,5);
+	_delay_ms(100);
+	PORTB |= (LED_R | LED_G | LED_B);
+    
+
+    uint16_t virtual_timer = 0;
+    for(;;)
+	{
+		virtual_timer++;
+		if (virtual_timer == 0) {
+			temperature_measure();
+		}
+		usb_loop();
+	}
+
+    return 0; 
 }
 
+/*
 #define TEMPERATURE_THRESHOLD 80
 
 int main() {
@@ -132,7 +171,7 @@ int main() {
 				_delay_ms(10);
 				fadeColor++;
 			} while (fadeColor != 0);
-		}*/
+		}* /
 
 		uint8_t tempValue = ((int8_t)readTemperature());
 		uint8_t tempColor = 0;
@@ -150,4 +189,4 @@ int main() {
 	}
 
 	return 0;
-}
+}*/

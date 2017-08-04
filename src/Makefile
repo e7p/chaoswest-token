@@ -3,17 +3,15 @@ F_CPU=16500000
 PROG=dragon_isp
 PROG_PORT=usb
 
-# main.hex
-TARGET=i2cusb.hex
+TARGET=main.hex
 
-# i2cusb.o
-OBJ=usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o
+OBJ=temperature.o i2cusb.o usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o Light_WS2812/light_ws2812.o
 
 FORMAT=ihex
 OBJCOPY=avr-objcopy
 OBJSIZE=avr-size
 CC=avr-gcc
-CFLAGS=-mmcu=$(MMCU) -I. -gdwarf-2 -DF_CPU=$(F_CPU)UL -Os -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Wall -Wextra -pedantic -Wundef -std=gnu11 -Wundef -lm
+CFLAGS=-mmcu=$(MMCU) -I. -ILight_WS2812 -gdwarf-2 -DF_CPU=$(F_CPU)UL -Os -funsigned-char -funsigned-bitfields -fpack-struct -fshort-enums -Wall -Wextra -pedantic -Wundef -std=gnu11 -Wundef -lm
 CFLAGS+=-ffunction-sections -fdata-sections -mstrict-X -maccumulate-args -Wl,--gc-sections
 
 all: $(TARGET)

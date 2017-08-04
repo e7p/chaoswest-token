@@ -74,6 +74,8 @@
 #include <string.h>
 #include "usbdrv/usbdrv.h"
 
+#include "temperature.h"
+
 #define sbi(register,bit) (register|=(1<<bit))
 #define cbi(register,bit) (register&=~(1<<bit))
 
@@ -183,6 +185,7 @@ struct i2c_cmd {
 
 static uchar status = STATUS_IDLE;
 
+uint8_t data_buffer[16];
 
 static uchar i2c_do(struct i2c_cmd *cmd) {
   uchar addr;
@@ -195,37 +198,36 @@ static uchar i2c_do(struct i2c_cmd *cmd) {
   if (cmd->flags & I2C_M_RD )
     addr |= 1;
 
-  /*if(cmd->cmd & CMD_I2C_BEGIN)
-    i2c_start();
-  else 
-    i2c_repstart();*/
+  // check DEVICE address
+  status = STATUS_ADDRESS_ACK;
+  expected = cmd->len;
+  uint16_t ds1721_value;
+  switch (addr) {
+  	case 0x90:
+  	// accept
+  	break;
 
-  // send DEVICE address
-  /*if(!i2c_put_u08(addr)) {
-    DEBUGF("I2C read: address error @ %x\n", addr);
+  	case 0x91:
+	ds1721_value = celsiusToDS1721(adcToCelsius(temperature_get()));
+  	data_buffer[0] = (ds1721_value >> 8) & 0xFF;
+  	data_buffer[1] = ds1721_value & 0xFF;
+  	if (expected > 2) {
+  		expected = 2;
+  	}
+  	break;
 
-    status = STATUS_ADDRESS_NAK;
-    expected = 0;
-    i2c_stop();
-  } else {  */
-    status = STATUS_ADDRESS_ACK;
-    expected = cmd->len;
+  	default:
+	status = STATUS_ADDRESS_NAK;
+  	break;
+  }
+
+  if (status == STATUS_ADDRESS_ACK) {
     saved_cmd = cmd->cmd;
-
-    /* check if transfer is already done (or failed) */
-    /*if((cmd->cmd & CMD_I2C_END) && !expected) 
-      i2c_stop();
-  }*/
+  } else {
+    expected = 0;
+  }
 
   return(cmd->len?0xff:0x00);
-}
-
-uint16_t temp = 0;
-
-uint16_t readTemperature() {
-	ADCSRA |= (1 << ADSC);
-	while (ADCSRA & (1 << ADSC)) { }
-	return (ADCH << 8) | ADCL;
 }
 
 // ----------------------------------------------------------------------
@@ -239,29 +241,19 @@ uchar usbFunctionRead(uchar *data, uchar len)
   DEBUGF("read %d bytes, %d exp\n", len, expected);
 
   if(status == STATUS_ADDRESS_ACK) {
-    /*if(len > expected) {
+    if(len > expected) {
       DEBUGF("exceeds!\n");
       len = expected;
     }
 
     // consume bytes
+    uint8_t *data_buffer_ptr = data_buffer;
     for(i=0;i<len;i++) {
       expected--;
-      *data = i2c_get_u08(expected == 0);
+      *data = *(data_buffer_ptr++);
       DEBUGF("data = %x\n", *data);
       data++;
     }
-
-    // end transfer on last byte
-    if((saved_cmd & CMD_I2C_END) && !expected) 
-      i2c_stop();*/
-
-    for(i=0;i<len;i++) {
-    	//temp++;
-      *(data++) = temp & 0xFF;
-      *(data++) = temp >> 8;
-    }
-
   } else {
     DEBUGF("not in ack state\n");
     memset(data, 0, len);
@@ -275,7 +267,7 @@ uchar usbFunctionRead(uchar *data, uchar len)
 // ----------------------------------------------------------------------
 uchar usbFunctionWrite(uchar *data, uchar len)
 {
-  uchar i, err=0;
+  uchar i;
 
   DEBUGF("write %d bytes, %d exp\n", len, expected);
 
@@ -286,22 +278,11 @@ uchar usbFunctionWrite(uchar *data, uchar len)
     }
 
     // consume bytes
-    /*for(i=0;i<len;i++) {
+    for(i=0;i<len;i++) {
       expected--;
       DEBUGF("data = %x\n", *data);
-      if(!i2c_put_u08(*data++))
-	err = 1;
+      // TODO: read the data bytes... (?)
     }
-
-    // end transfer on last byte
-    if((saved_cmd & CMD_I2C_END) && !expected) 
-      i2c_stop();
-
-    if(err) {
-      DEBUGF("write failed\n");
-      //TODO: set status
-    }*/
-
   } else {
     DEBUGF("not in ack state\n");
     memset(data, 0, len);
@@ -410,24 +391,8 @@ void usbEventResetReady(void)
     eeprom_write_byte(0, OSCCAL);   /* store the calibrated value in EEPROM */
 }
 
-
-static inline void initSerialNumber();
-
-ISR(ADC_vect)
-{
-	temp = ADCL;
-	temp |= (ADCH << 8);
-}
-
-#define LED_R (1 << PB5)
-#define LED_G (1 << PB0)
-#define LED_B (1 << PB1)
-
-/* ------------------------------------------------------------------------- */
-/* --------------------------------- main ---------------------------------- */
-/* ------------------------------------------------------------------------- */
-int main(void) {
-	uchar   i;
+void usb_setup(void) {
+	uchar i;
 	uchar   calibrationValue;
 	
     calibrationValue = eeprom_read_byte(0); /* calibration value from last time */
@@ -435,15 +400,6 @@ int main(void) {
         OSCCAL = calibrationValue;
     }
 
-	// Initialize GPIOs
-	PORTB |= LED_R | LED_G | LED_B;
-	DDRB |= LED_R | LED_G | LED_B;
-
-    // Setup ADC (2.56 V reference, Interrupt)
-	ADMUX = (1 << REFS2) | (1 << REFS1) | (1 << MUX0);
-	ADCSRA = (1 << ADEN) | (1 << ADIE) | (1 << ADPS2);
-	sei();
-    
     usbDeviceDisconnect();
     for(i=0;i<20;i++){  /* 300 ms disconnect */
         _delay_ms(15);
@@ -454,17 +410,9 @@ int main(void) {
 
     usbInit();
     sei();
+}
 
-    uint16_t virtual_timer = 0;
-    for(;;)
-	{
-		virtual_timer++;
-		if (virtual_timer == 0) {
-			ADCSRA |= (1 << ADSC);
-		}
-        wdt_reset();
-        usbPoll();
-	}
-
-    return 0; 
+void usb_loop(void) {
+	wdt_reset();
+	usbPoll();
 }
