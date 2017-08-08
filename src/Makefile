@@ -5,7 +5,7 @@ PROG_PORT=usb
 
 TARGET=main.hex
 
-OBJ=temperature.o i2cusb.o usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o Light_WS2812/light_ws2812.o
+OBJ=lm75a.o temperature.o i2cusb.o usbdrv/usbdrv.o usbdrv/usbdrvasm.o usbdrv/oddebug.o Light_WS2812/light_ws2812.o
 
 FORMAT=ihex
 OBJCOPY=avr-objcopy

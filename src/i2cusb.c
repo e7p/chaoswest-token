@@ -74,7 +74,8 @@
 #include <string.h>
 #include "usbdrv/usbdrv.h"
 
-#include "temperature.h"
+#include "lm75a.h"
+#include "main.h"
 
 #define sbi(register,bit) (register|=(1<<bit))
 #define cbi(register,bit) (register&=~(1<<bit))
@@ -86,6 +87,10 @@ int usbDescriptorStringSerialNumber[] = {
 };
 
 #define DEBUGF(s, ...)
+#include <stdio.h>
+extern FILE uart_str;
+#define DEBUGS(s, ...)
+//#define DEBUGS(format, args...) stdout=&uart_str;printf_P(PSTR(format), ##args)
 
 #define ENABLE_SCL_EXPAND
 
@@ -167,7 +172,10 @@ static uint16_t clock_delay = DEFAULT_DELAY;
 static uint16_t clock_delay2 = DEFAULT_DELAY / 2;
 
 static uint16_t expected = 0;
+static unsigned char saved_addr;
 static unsigned char saved_cmd;
+
+uint8_t led_start;
 
 /* ------------------------------------------------------------------------- */
 
@@ -185,35 +193,38 @@ struct i2c_cmd {
 
 static uchar status = STATUS_IDLE;
 
-uint8_t data_buffer[16];
-
 static uchar i2c_do(struct i2c_cmd *cmd) {
   uchar addr;
 
   DEBUGF("i2c %s at 0x%02x, len = %d\n", 
-	   (cmd->flags&I2C_M_RD)?"rd":"wr", cmd->addr, cmd->len); 
+	   (cmd->flags&I2C_M_RD)?"rd":"wr", cmd->addr, cmd->len);
 
   /* normal 7bit address */
   addr = ( cmd->addr << 1 );
   if (cmd->flags & I2C_M_RD )
     addr |= 1;
 
+  DEBUGS("%c%c%c%c", (cmd->flags&I2C_M_RD)?0x00:0xFF, addr, cmd->cmd, cmd->len);
+
   // check DEVICE address
   status = STATUS_ADDRESS_ACK;
   expected = cmd->len;
-  uint16_t ds1721_value;
+
   switch (addr) {
-  	case 0x90:
-  	// accept
+  	case 0x84:
+  	case 0x85:
+  	// LED address setup
+  	animation = 0;
   	break;
 
+  	case 0x86:
+  	case 0x87:
+  	// LED brightness setup
+  	break;
+
+  	case 0x90:
   	case 0x91:
-	ds1721_value = celsiusToDS1721(adcToCelsius(temperature_get()));
-  	data_buffer[0] = (ds1721_value >> 8) & 0xFF;
-  	data_buffer[1] = ds1721_value & 0xFF;
-  	if (expected > 2) {
-  		expected = 2;
-  	}
+  	// LM75A address setup
   	break;
 
   	default:
@@ -223,6 +234,7 @@ static uchar i2c_do(struct i2c_cmd *cmd) {
 
   if (status == STATUS_ADDRESS_ACK) {
     saved_cmd = cmd->cmd;
+  	saved_addr = addr;
   } else {
     expected = 0;
   }
@@ -241,22 +253,34 @@ uchar usbFunctionRead(uchar *data, uchar len)
   DEBUGF("read %d bytes, %d exp\n", len, expected);
 
   if(status == STATUS_ADDRESS_ACK) {
-    if(len > expected) {
-      DEBUGF("exceeds!\n");
-      len = expected;
-    }
-
-    // consume bytes
-    uint8_t *data_buffer_ptr = data_buffer;
-    for(i=0;i<len;i++) {
-      expected--;
-      *data = *(data_buffer_ptr++);
-      DEBUGF("data = %x\n", *data);
-      data++;
-    }
+    if (saved_addr == 0x91) {
+    	uint8_t *lm75a_data_buffer_ptr = lm75a_data_buffer;
+    	if (len > lm75a_data_length) {
+    		len = lm75a_data_length;
+    	}
+	    for(i=0;i<len;i++) {
+	      *data = *(lm75a_data_buffer_ptr++);
+	      data++;
+	    }
+    } else if (saved_addr == 0x85) {
+    	if (len + led_start > NUM_LEDS * 3) {
+    		len = NUM_LEDS * 3 - led_start;
+    	}
+    	for (uint8_t i = led_start; i < len; i++) {
+    		*data = getColorValue(i / 3, i % 3);
+    		data++;
+    	}
+    } else if (saved_addr == 0x87) {
+    	for (uint8_t i = 0; i < len; i++) {
+	    	*data = brightness_cache;
+    		data++;
+    	}
+    } else {
+		memset(data, 0, len);
+  	}
   } else {
-    DEBUGF("not in ack state\n");
-    memset(data, 0, len);
+	DEBUGF("not in ack state\n");
+	memset(data, 0, len);
   }
   return len;
 
@@ -278,11 +302,26 @@ uchar usbFunctionWrite(uchar *data, uchar len)
     }
 
     // consume bytes
-    for(i=0;i<len;i++) {
-      expected--;
-      DEBUGF("data = %x\n", *data);
-      // TODO: read the data bytes... (?)
-    }
+  	if (saved_addr == 0x90) {
+  	  lm75a_handle(data[0]);
+  	} else if (saved_addr == 0x84) {
+  	  led_start = data[0];
+  	  for (uint8_t i = 0; i < len - 1; i++) {
+  	  	uint8_t temp_index = led_start + i;
+  	  	setColorValue(temp_index / 3, temp_index % 3, data[i]);
+  	  }
+  	} else if (saved_addr == 0x86) {
+  	  if (len > 1) {
+	  	  data++; // use the second byte if address is given
+	  }
+  	  eeprom_update_byte(&config_brightness, *data);
+  	  brightness_cache = *data;
+  	  for (uint8_t i = 0; i < NUM_LEDS; i++) {
+  	  	for (uint8_t j = 0; j < 3; j++) {
+  	  		updateFrame(i, j);
+  	  	}
+  	  }
+  	}
   } else {
     DEBUGF("not in ack state\n");
     memset(data, 0, len);

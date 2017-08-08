@@ -1,8 +1,10 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <avr/pgmspace.h>
+#include <avr/eeprom.h>
 #include <util/delay.h>
 
+#include "temperature.h"
 #include "i2cusb.h"
 #include "light_ws2812.h"
 
@@ -10,11 +12,18 @@
 #define LED_G (1 << PB0)
 #define LED_B (1 << PB1)
 
-struct cRGB ws2813_led[5];
+#define NUM_LEDS 6
+struct cRGB leds[NUM_LEDS];
+struct cRGB fade[NUM_LEDS];
 
-uint8_t frontRGB[3] = {0, 0, 0};
-uint8_t frontFadeRGB[3] = {0, 0, 0};
+struct cRGB frame[NUM_LEDS];
+
+uint8_t config_brightness EEMEM = 0x80;
+uint8_t config_osccal EEMEM;
+
+uint8_t brightness_cache;
 uint8_t pwmClock = 0;
+uint8_t animation = 1;
 
 const uint8_t pwmTable[] PROGMEM = {
 	0x00, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01, 0x01,
@@ -35,231 +44,159 @@ const uint8_t pwmTable[] PROGMEM = {
 	0xb8, 0xbc, 0xc0, 0xc5, 0xc9, 0xcd, 0xd2, 0xd6, 0xdb, 0xe0, 0xe5, 0xea, 0xef, 0xf4, 0xfa, 0xff
 };
 
-uint8_t readTemperature() {
-	ADCSRA |= (1 << ADSC);
-	while (ADCSRA & (1 << ADSC)) { }
-	return ADCH;
+uint8_t invalidate_ws2813 = 0;
+
+void updateFrame(uint8_t index, uint8_t channel) {
+	uint8_t temp_color = ((uint16_t)((uint8_t*)(leds + index))[channel]) * brightness_cache / 255;
+	if (index == 0) {
+		temp_color = pgm_read_byte(&(pwmTable[temp_color]));
+	}
+	((uint8_t*)(frame + index))[channel] = temp_color;
+	if (index > 0) {
+		invalidate_ws2813 = 1;
+	}
 }
 
-void setFrontFadeColorValue(uint8_t channel, uint8_t value) {
-	frontFadeRGB[channel] = pgm_read_byte(&(pwmTable[value]));
+void setFadeColorValue(uint8_t index, uint8_t channel, uint8_t value) {
+	((uint8_t*)(fade + index))[channel] = value;
 }
 
-void setFrontColorValue(uint8_t channel, uint8_t value) {
-	frontRGB[channel] = pgm_read_byte(&(pwmTable[value]));
-	frontFadeRGB[channel] = frontRGB[channel];
+void setColorValue(uint8_t index, uint8_t channel, uint8_t value) {
+	((uint8_t*)(leds + index))[channel] = value;
+	((uint8_t*)(fade + index))[channel] = value;
+	updateFrame(index, channel);
 }
 
-/* Timer 0: 125kHz Software PWM */
-/*ISR(TIMER0_COMPA_vect)
-{
-	if (pwmClock < frontRGB[0]) {
-		PORTB &= ~LED_R;
-	} else {
-		PORTB |= LED_R;
-	}
-	if (pwmClock < frontRGB[1]) {
-		PORTB &= ~LED_G;
-	} else {
-		PORTB |= LED_G;
-	}
-	if (pwmClock < frontRGB[2]) {
-		PORTB &= ~LED_B;
-	} else {
-		PORTB |= LED_B;
-	}
-
-	pwmClock++;
-
-	if (pwmClock == 0) {
-		for (uint8_t i = 0; i < 3; i++) {
-			if (frontRGB[i] > frontFadeRGB[i]) {
-				frontRGB[i]--;
-			} else if (frontRGB[i] < frontFadeRGB[i]) {
-				frontRGB[i]++;
-			}
-		}
-	}
-}*/
+uint8_t getColorValue(uint8_t index, uint8_t channel) {
+	return ((uint8_t*)(leds + index))[channel];
+}
 
 int main(void) {
-	temperature_setup();
+	// Initialize Temperature Sensor and USB
 	usb_setup();
-	
+	temperature_setup();
+
 	// Initialize GPIOs
 	PORTB |= LED_R | LED_G | LED_B;
 	DDRB |= LED_R | LED_G | LED_B;
 
-	ws2813_led[0].r=255;ws2813_led[0].g=0;ws2813_led[0].b=0;
-	ws2813_led[1].r=255;ws2813_led[1].g=255;ws2813_led[1].b=0;
-	ws2813_led[2].r=0;ws2813_led[2].g=255;ws2813_led[2].b=0;
-	ws2813_led[3].r=0;ws2813_led[3].g=0;ws2813_led[3].b=255;
-	ws2813_led[4].r=255;ws2813_led[4].g=0;ws2813_led[4].b=255;
-	ws2812_setleds(ws2813_led,5);
-	_delay_ms(100);
-	ws2812_setleds(ws2813_led,5);
-	_delay_ms(100);
-	PORTB |= (LED_R | LED_G | LED_B);
-    
+	// Load the stored LED Brightness
+	brightness_cache = eeprom_read_byte(&config_brightness);
+
+	// Set the back WS2813 LEDs
+	leds[1].r=255;leds[1].g=0;leds[1].b=0;
+	leds[2].r=255;leds[2].g=255;leds[2].b=0;	
+	leds[3].r=0;leds[3].g=255;leds[3].b=0;
+	leds[4].r=0;leds[4].g=0;leds[4].b=255;
+	leds[5].r=255;leds[5].g=0;leds[5].b=255;
+	for(uint8_t i = 0; i < NUM_LEDS; i++) {
+		for(uint8_t j = 0; j < 3; j++) {
+			updateFrame(i, j);
+		}
+	}
 
     uint16_t virtual_timer = 0;
     uint8_t step = 0;
     for(;;)
 	{
+		// Update WS2813
+		/*if (invalidate_ws2813 == 1) {
+			invalidate_ws2813 = 0;
+			PORTB &= ~LED_B;
+			_delay_ms(100);
+			ws2812_setleds(frame+1,5);
+			_delay_ms(100);
+			PORTB |= LED_B;
+		}*/
+
 		virtual_timer++;
 		if (virtual_timer == 0) {
-			temperature_measure();
+			temperature_measure(); // Start Temperature Measurement
 
-			switch (step) {
-				case 0:
-				setFrontFadeColorValue(0, 255);
-				setFrontFadeColorValue(1, 0);
-				setFrontFadeColorValue(2, 0);
-				break;
+			// Front LED Animation
+			if (animation) {
+				switch (step) {
+					case 0:
+					setFadeColorValue(0, 0, 255);
+					setFadeColorValue(0, 1, 0);
+					setFadeColorValue(0, 2, 0);
+					break;
 
-				case 1:
-				setFrontFadeColorValue(0, 255);
-				setFrontFadeColorValue(1, 255);
-				setFrontFadeColorValue(2, 0);
-				break;
+					case 1:
+					setFadeColorValue(0, 0, 255);
+					setFadeColorValue(0, 1, 255);
+					setFadeColorValue(0, 2, 0);
+					break;
 
-				case 2:
-				setFrontFadeColorValue(0, 0);
-				setFrontFadeColorValue(1, 255);
-				setFrontFadeColorValue(2, 0);
-				break;
+					case 2:
+					setFadeColorValue(0, 0, 0);
+					setFadeColorValue(0, 1, 255);
+					setFadeColorValue(0, 2, 0);
+					break;
 
-				case 3:
-				setFrontFadeColorValue(0, 0);
-				setFrontFadeColorValue(1, 255);
-				setFrontFadeColorValue(2, 255);
-				break;
+					case 3:
+					setFadeColorValue(0, 0, 0);
+					setFadeColorValue(0, 1, 255);
+					setFadeColorValue(0, 2, 255);
+					break;
 
-				case 4:
-				setFrontFadeColorValue(0, 0);
-				setFrontFadeColorValue(1, 0);
-				setFrontFadeColorValue(2, 255);
-				break;
+					case 4:
+					setFadeColorValue(0, 0, 0);
+					setFadeColorValue(0, 1, 0);
+					setFadeColorValue(0, 2, 255);
+					break;
 
-				case 5:
-				setFrontFadeColorValue(0, 255);
-				setFrontFadeColorValue(1, 0);
-				setFrontFadeColorValue(2, 255);
-				step = -1;
-				break;
+					case 5:
+					setFadeColorValue(0, 0, 255);
+					setFadeColorValue(0, 1, 0);
+					setFadeColorValue(0, 2, 255);
+					step = -1;
+					break;
 
-				default:
-				break;
+					default:
+					break;
+				}
+				step++;
 			}
-			step++;
 		}
-		if (1) {
-			if (pwmClock < frontRGB[0]) {
-				PORTB &= ~LED_R;
-			} else {
-				PORTB |= LED_R;
-			}
-			if (pwmClock < frontRGB[1]) {
-				PORTB &= ~LED_G;
-			} else {
-				PORTB |= LED_G;
-			}
-			if (pwmClock < frontRGB[2]) {
-				PORTB &= ~LED_B;
-			} else {
-				PORTB |= LED_B;
-			}
+		
+		// Software PWM of Front LED
+		if (pwmClock < frame[0].r) {
+			PORTB &= ~LED_R;
+		} else {
+			PORTB |= LED_R;
+		}
+		if (pwmClock < frame[0].g) {
+			PORTB &= ~LED_G;
+		} else {
+			PORTB |= LED_G;
+		}
+		if (pwmClock < frame[0].b) {
+			PORTB &= ~LED_B;
+		} else {
+			PORTB |= LED_B;
+		}
 
-			pwmClock++;
+		pwmClock++;
 
-			if (pwmClock == 0) {
+		// Calculate next Color
+		if (pwmClock == 0) {
+			for (uint8_t j = 0; j < NUM_LEDS; j++) {
 				for (uint8_t i = 0; i < 3; i++) {
-					if (frontRGB[i] > frontFadeRGB[i]) {
-						frontRGB[i]--;
-					} else if (frontRGB[i] < frontFadeRGB[i]) {
-						frontRGB[i]++;
+					if (((uint8_t*)(leds + j))[i] > ((uint8_t*)(fade + j))[i]) {
+						((uint8_t*)(leds + j))[i]--;
+						updateFrame(j, i);
+					} else if (((uint8_t*)leds + j)[i] < ((uint8_t*)(fade + j))[i]) {
+						((uint8_t*)(leds + j))[i]++;
+						updateFrame(j, i);
 					}
 				}
 			}
 		}
+
+		// USB Loop
 		usb_loop();
 	}
 
     return 0; 
 }
-
-/*
-#define TEMPERATURE_THRESHOLD 80
-
-int main() {
-	// Initialize GPIOs
-	PORTB |= LED_R | LED_G | LED_B;
-	DDRB |= LED_R | LED_G | LED_B;
-
-	// Setup ADC (1.1 V reference, ca. +50°C; 0 V is ca. -50°C)
-	ADMUX = (1 << REFS2) | (1 << REFS1) | (1 << ADLAR) | (1 << MUX0);
-	ADCSRA = (1 << ADEN); // | (1 << ADIE);
-
-	// Initialize Timer (no prescaler, CTC mode with 125kHz frequency)
-	TCCR0A = (1 << WGM01);
-	OCR0A = 132;
-	TIMSK = (1 << OCIE0A);
-	TCCR0B = (1 << CS00);
-	sei();
-
-	//setFrontColorValue(2, 255);
-
-	setFrontColorValue(0, 127);
-	setFrontColorValue(2, 127);
-
-	while (1) {
-		/*for (uint8_t fadeState = 0; fadeState < 6; fadeState++) {
-			uint8_t fadeColor = 0;
-			do {
-				switch (fadeState) {
-					case 0: // fade to red + blue
-					setFrontColorValue(0, fadeColor);
-					break;
-
-					case 1: // fade to red
-					setFrontColorValue(2, 255 - fadeColor);
-					break;
-
-					case 2: // fade to red + green
-					setFrontColorValue(1, fadeColor);
-					break;
-
-					case 3: // fade to green
-					setFrontColorValue(0, 255 - fadeColor);
-					break;
-
-					case 4: // fade to green + blue
-					setFrontColorValue(2, fadeColor);
-					break;
-
-					case 5: // fade to blue
-					setFrontColorValue(1, 255 - fadeColor);
-					break;
-				}
-				_delay_ms(10);
-				fadeColor++;
-			} while (fadeColor != 0);
-		}* /
-
-		uint8_t tempValue = ((int8_t)readTemperature());
-		uint8_t tempColor = 0;
-		if (tempValue > TEMPERATURE_THRESHOLD + 8) {
-			tempColor = 0xFF;
-		} else if (tempValue < TEMPERATURE_THRESHOLD - 6) {
-			tempColor = 0x00;
-		} else {
-			tempColor = (tempValue + 8 - TEMPERATURE_THRESHOLD);
-			tempColor = (tempColor << 4) | tempColor;
-		}
-
-		setFrontFadeColorValue(0, tempColor);
-		setFrontFadeColorValue(2, 255 - tempColor);
-	}
-
-	return 0;
-}*/
