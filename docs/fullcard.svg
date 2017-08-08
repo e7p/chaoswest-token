@@ -1,0 +1,240 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="52mm"
+   height="74mm"
+   viewBox="0 0 52 74"
+   version="1.1"
+   id="svg4680"
+   inkscape:version="0.92.1 r"
+   sodipodi:docname="fullcard.svg">
+  <defs
+     id="defs4674">
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker7636-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Send">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         d="m 8.7185878,4.0337352 -10.9258773,-4.01772194 10.9258779,-4.01772106 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path7634-1" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker7636-3-7"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Send">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         d="m 8.7185878,4.0337352 -10.9258773,-4.01772194 10.9258779,-4.01772106 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path7634-1-8" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker7636-3-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Send">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         d="m 8.7185878,4.0337352 -10.9258773,-4.01772194 10.9258779,-4.01772106 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path7634-1-2" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker7636-3-0-3"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Send">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         d="m 8.7185878,4.0337352 -10.9258773,-4.01772194 10.9258779,-4.01772106 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path7634-1-2-7" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker7636-3-0-9"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Send">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         d="m 8.7185878,4.0337352 -10.9258773,-4.01772194 10.9258779,-4.01772106 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path7634-1-2-2" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker7636-3-0-8"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Send">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         d="m 8.7185878,4.0337352 -10.9258773,-4.01772194 10.9258779,-4.01772106 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path7634-1-2-9" />
+    </marker>
+    <marker
+       inkscape:isstock="true"
+       style="overflow:visible"
+       id="marker7636-3-0-36"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="Arrow2Send">
+      <path
+         inkscape:connector-curvature="0"
+         transform="matrix(-0.3,0,0,-0.3,0.69,0)"
+         d="m 8.7185878,4.0337352 -10.9258773,-4.01772194 10.9258779,-4.01772106 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         style="fill:#000000;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.625;stroke-linejoin:round;stroke-opacity:1"
+         id="path7634-1-2-1" />
+    </marker>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="0.98994949"
+     inkscape:cx="124.13522"
+     inkscape:cy="62.89163"
+     inkscape:document-units="mm"
+     inkscape:current-layer="g11052"
+     showgrid="false"
+     inkscape:window-width="1366"
+     inkscape:window-height="719"
+     inkscape:window-x="0"
+     inkscape:window-y="27"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata4677">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Ebene 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-223)">
+    <g
+       transform="matrix(4.0446676,0,0,4.0446676,-197.61043,186.59063)"
+       id="g11052">
+      <text
+         xml:space="preserve"
+         style="font-style:normal;font-weight:normal;font-size:0.49680227px;line-height:1.24200571px;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.04968023px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+         x="49.735142"
+         y="11.785692"
+         id="text6135"><tspan
+           sodipodi:role="line"
+           id="tspan6133"
+           x="49.735142"
+           y="11.785692"
+           style="font-size:2.11968946px;stroke-width:0.04968023px">Full Version</tspan><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="13.027698"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan6143" /><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="14.351901"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan6153">Features:</tspan><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="15.676104"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan14450">- Microcontroller</tspan><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="17.000307"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan14458">- Temperature Sensor</tspan><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="18.324511"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan14452">- USB (charging &amp; data)</tspan><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="19.648712"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan14454">- LIR2032 rechargable Coin Cell</tspan><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="20.972916"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan14456">- RGB LED</tspan><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="22.297119"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan14460">- Support for WS2813 LEDs</tspan><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="23.539124"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan6149" /><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="24.863327"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan14477">1. upload Firmware (git.io/cwtkn)</tspan><tspan
+           sodipodi:role="line"
+           x="49.735142"
+           y="26.187531"
+           style="font-size:0.79488355px;stroke-width:0.04968023px"
+           id="tspan14479">2. check for updates on github</tspan></text>
+      <rect
+         y="9.1253653"
+         x="48.980644"
+         height="18.048529"
+         width="12.856434"
+         id="rect4757-9"
+         style="opacity:1;fill:none;fill-opacity:1;stroke:#000000;stroke-width:0.24723911;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1" />
+    </g>
+  </g>
+</svg>
