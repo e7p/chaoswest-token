@@ -58,7 +58,7 @@ All parts, except from the thru-hole LED on the front are SMD-components, which 
 
 Part         | Value           | Description                                           | Farnell
 ------------ | --------------- | ----------------------------------------------------- | -------
-BAT1         | Keystone 3002   | CR2032 / LIR2032 Coin Cell Holder                     | 1650693
+BAT1         | Keystone 3002   | CR2032 / LIR2032 Coin Cell Holder (only use rechargable LIR2032 with Li-Ion Charger, never use CR2032)                     | 1650693
 C1,2,5       | 10 nF           | 0805 Ceramic Capacitor (10V)                          | 1759246
 C3,4         | 4.7 µF          | 0805 Ceramic Capacitor (10V)                          | 1759427
 C6           | 100 nF          | 0805 Ceramic Capacitor (10V)                          | 9406387
@@ -130,13 +130,18 @@ Never use the charging circuit for normal CR2032 coin cells. If you solder, you 
 
 R4: for greater Li-Ion Cells can be other (330mAh: 4k works), charging-rate originally set for smaller LIR2032 (about 20mAh). Refer to the MCP7383 datasheet for more details on this “Program” resistor.
 
+R7: This from the schematic is connected between USB-DM and +5V, but it must be connected between USB-DM and VCC. Otherwise it _won't boot_ when a bootloader is flashed on the Microcontroller and run from the battery. So it is neccessary to solder only the USB-DM pad of R7 to the resistor and leave the other side of the resistor in the air and then solder some copper wire between this and a VCC pad.
+
 ### Microcontroller and ISP Port
 
 TODO
 
+When using the bootloader, keep in mind that R7 needs to be bodge-wired (see topic “Li-Ion Charger and USB Jack”.
+
 ### Temperature Sensor
 
-The MCP9700AT-E/LT temperature sensor has an range of -40°C to 125°C with a maximum tolerance of ±2°C tolerance. If it is calibrated at 25°C, a tolerance of ±1°C can be achieved. It is connected to pin PB2 and can be read out using the Analog/Digital-Converter channel 1 (ADC1).
+The MCP9700AT-E/LT temperature sensor has an range of -40°C to 125°C with a maximum tolerance of ±2°C tolerance. If it is cali
+brated at 25°C, a tolerance of ±1°C can be achieved. It is connected to pin PB2 and can be read out using the Analog/Digital-Converter channel 1 (ADC1).
 
 ### WS2813 LEDs
 
@@ -163,6 +168,18 @@ The USB jack can be used to charge the Li-Ion battery or to exchange data betwee
 ### Bootloader
 [micronucleus](https://github.com/micronucleus/micronucleus)
 
+To write the Bootloader, connect via ISP port (or SO-8 clamp directly on the AtTiny).
+
+_Important_: It is neccessary to flash without the temperature sensor, as it would override the clock pin of the ISP process.
+
+Flash the Bootloader (micronucleus default build for ATTiny85 or Digispark) with the following commands:
+
+1. `cd firmware`
+2. `make flash fuse` (only continue if successfully and connectable via USB; DigiSpark Driver)
+3. `make disablereset` (this _disables_ the Reset functionality and won't allow you to flash the ATTiny85 again via ISP. After this fusing it is only possible via HVSP to rescue a wrongly flashed ATTiny85).
+
+When using the bootloader, keep in mind that R7 needs to be bodge-wired (see topic “Li-Ion Charger and USB Jack”.
+
 ## Firmware
 
-TODO
+`make usbflash` should be enough to flash to a token with installed micronucleus bootloader.
