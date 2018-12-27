@@ -12,7 +12,7 @@
    viewBox="0 0 1100 600"
    id="svg8327"
    sodipodi:docname="chaoswest-token-groups.svg"
-   inkscape:version="0.92.1 r"
+   inkscape:version="0.92.2 2405546, 2018-03-11"
    width="1100"
    height="600"
    style="stroke-width:0;stroke-linecap:round;stroke-linejoin:round">
@@ -24,7 +24,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -37,14 +37,14 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1366"
-     inkscape:window-height="719"
+     inkscape:window-width="1920"
+     inkscape:window-height="1024"
      id="namedview8329"
      showgrid="false"
-     showguides="false"
-     inkscape:zoom="0.64"
-     inkscape:cx="526.80308"
-     inkscape:cy="297.81746"
+     showguides="true"
+     inkscape:zoom="0.90509668"
+     inkscape:cx="411.8742"
+     inkscape:cy="281.10073"
      inkscape:window-x="0"
      inkscape:window-y="27"
      inkscape:window-maximized="1"
@@ -3652,7 +3652,7 @@
       </g>
     </g>
     <path
-       style="fill:#ffc552;fill-opacity:0.81521738;fill-rule:evenodd;stroke:#f0a000;stroke-width:100;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       style="fill:#ff7c52;fill-opacity:0.81568629;fill-rule:evenodd;stroke:#f0a000;stroke-width:100;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 42544,39538 -3248.627,-3048.741 v -6010.407 l 5091.169,-141.422 -38.542,8110.57 z"
        id="path8876"
        inkscape:connector-curvature="0" />
@@ -3772,7 +3772,7 @@
        id="tspan10752"
        x="638.10156"
        y="309.35617"
-       style="font-size:24px">Essentials (Coin-Cell Holder and LED)</tspan></text>
+       style="font-size:24px">Essentials (Battery, Switch, and LED)</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:24.00000191px;line-height:25px;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
@@ -3782,7 +3782,7 @@
        sodipodi:role="line"
        id="tspan10756"
        x="638.14844"
-       y="348.94601">Power Switch and other LED</tspan></text>
+       y="348.94601">Other LED</tspan></text>
   <text
      xml:space="preserve"
      style="font-style:normal;font-weight:normal;font-size:24.00000191px;line-height:25px;font-family:Sans;letter-spacing:0px;word-spacing:0px;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
